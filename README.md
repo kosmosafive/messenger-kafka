@@ -1,11 +1,5 @@
 # Symfony Messenger Kafka Transport
 
-[![License](https://img.shields.io/github/license/KonstantinCodes/messenger-kafka.svg)](LICENSE)
-[![Packagist](https://img.shields.io/packagist/dt/koco/messenger-kafka.svg)](https://packagist.org/packages/koco/messenger-kafka)
-[![Maintainability](https://api.codeclimate.com/v1/badges/7fa3d2da6a828a676f35/maintainability)](https://codeclimate.com/github/KonstantinCodes/messenger-kafka/maintainability)
-[![CircleCI](https://circleci.com/gh/KonstantinCodes/messenger-kafka.svg?style=svg)](https://circleci.com/gh/KonstantinCodes/messenger-kafka)
-[![Tests](https://github.com/KonstantinCodes/messenger-kafka/workflows/Tests/badge.svg)](https://github.com/KonstantinCodes/messenger-kafka/actions)
-
 This bundle aims to provide a simple Kafka transport for Symfony Messenger. Kafka REST Proxy support coming soon.
 
 ## Installation
@@ -15,7 +9,7 @@ This bundle aims to provide a simple Kafka transport for Symfony Messenger. Kafk
 Open a command console, enter your project directory and execute:
 
 ```console
-$ composer require koco/messenger-kafka
+$ composer require kosmosafive/messenger-kafka
 ```
 
 ### Applications that don't use Symfony Flex
@@ -26,7 +20,7 @@ in the `config/bundles.php` file of your project:
 ```php
 return [
     // ...
-    Koco\Kafka\KocoKafkaBundle::class => ['all' => true],
+    Kosmosafive\Kafka\KosmosafiveKafkaBundle::class => ['all' => true],
 ];
 ```
 
@@ -130,32 +124,3 @@ final class MySerializer implements SerializerInterface
 ## How do I work with Avro?
 Same as with the basic example above, you need to build your own serializer.
 Within the `decode()` and `encode()` you can make use of [flix-tech/avro-serde-php](https://github.com/flix-tech/avro-serde-php).
-
-## What about the Confluent Schema Registry?
-To connect with Schema Registry and control various settings, you can use this bundle:
-
-```console
-$ composer require koco/avro-regy
-```
-
-And configure it to match your setup:
-
-```yaml
-avro_regy:
-  base_uri: '%env(SCHEMA_REGISTRY_URL)%'
-  file_naming_strategy: subject
-  options:
-    register_missing_schemas: true
-    register_missing_subjects: true
-  serializers:
-    catalogue:
-      schema_dir: '%kernel.project_dir%/src/Catalogue/Domain/Model/Event/Avro/'
-    orders:
-      schema_dir: '%kernel.project_dir%/src/Orders/Domain/Model/Event/Avro/'
-      file_naming_strategy: qualified_name
-      options:
-        register_missing_schemas: false
-        register_missing_subjects: false
-```
-
-Please see [https://github.com/KonstantinCodes/avro-regy](https://github.com/KonstantinCodes/avro-regy) for the full documentation.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Koco\Kafka\RdKafka;
+namespace Kosmosafive\Kafka\RdKafka;
 
 use RdKafka\Conf;
 use RdKafka\KafkaConsumer;

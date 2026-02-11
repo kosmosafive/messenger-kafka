@@ -1,45 +1,57 @@
 {
-  "name": "koco/messenger-kafka",
+  "name": "kosmosafive/messenger-kafka",
   "type": "symfony-bundle",
+  "minimum-stability": "stable",
   "description": "Symfony Messenger Kafka Transport",
-  "keywords": ["kafka", "symfony", "messenger", "transport", "queue", "bundle"],
-  "license": "MIT",
+  "keywords": [
+    "kafka",
+    "symfony",
+    "messenger",
+    "transport",
+    "queue",
+    "bundle"
+  ],
+  "authors": [
+    {
+      "name": "Siarhei Buinevich",
+      "email": "a5-kosmos@yandex.ru",
+      "homepage": "https://t.me/kosmosafive",
+      "role": "Author"
+    }
+  ],
+  "license": "Apache-2.0",
   "require": {
-    "php": "^7.4|8.*",
+    "php": "^8.4",
     "ext-json": "*",
-    "symfony/config": "^3.0||^4.0||^5.0||^6.0||7.*",
-    "symfony/dependency-injection": "^3.4.26||^4.1.12|^5.0||^6.0||7.*",
-    "symfony/http-kernel": "^3.0||^4.0||^5.0||^6.0||7.*",
-    "symfony/messenger": "^4.4||^5.0||^6.0||7.*",
-    "psr/http-client": "^1.0",
-    "psr/http-factory": "^1.0",
-    "psr/http-message": "^1.0",
-    "psr/log": "^1.0.1||^2.0 ||^3.0"
-  },
-  "require-dev": {
-    "friendsofphp/php-cs-fixer": "^3.6",
-    "kwn/php-rdkafka-stubs": "^2.1",
-    "symfony/phpunit-bridge": "^5.0||^6.0",
-    "symfony/framework-bundle": "^5.0||^6.0",
-    "symfony/serializer": "^5.0||^6.0",
-    "symfony/property-access": "^5.0||^6.0",
-    "phpstan/phpstan": "^1.4.6",
-    "nyholm/psr7": "^1.4"
-  },
-  "suggest": {
-    "ext-rdkafka": "^4.0; Needed to support Kafka connectivity",
-    "koco/avro-regy": "Confluent Schema Registry integration"
+    "ext-rdkafka": "*",
+    "symfony/config": "^7||^8",
+    "symfony/dependency-injection": "^7||^8",
+    "symfony/http-kernel": "^7||^8",
+    "symfony/messenger": "^7||^8",
+    "psr/http-client": "^1",
+    "psr/http-factory": "^1",
+    "psr/http-message": "^2",
+    "psr/log": "^3"
   },
   "autoload": {
-    "psr-4": { "Koco\\Kafka\\": "src/" }
+    "psr-4": {
+      "Kosmosafive\\Kafka\\": "src/"
+    }
   },
-  "autoload-dev": {
-    "psr-4": { "Koco\\Kafka\\Tests\\": "tests/" }
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "phpstan/phpstan": "^2.1",
+    "rector/rector": "^2.2",
+    "lendable/composer-license-checker": "^1.2",
+    "shipmonk/composer-dependency-analyser": "^1.8",
+    "friendsofphp/php-cs-fixer": "^3.89",
+    "monolog/monolog": "^3.9"
   },
   "scripts": {
-    "test": [
-      "vendor/bin/php-cs-fixer fix -v --dry-run --stop-on-violation --using-cache=no",
-      "vendor/bin/simple-phpunit tests/Unit --log-junit results/tests/junit.xml"
-    ]
+    "analyse": "vendor/bin/phpstan analyse -c phpstan.neon --ansi",
+    "rector:dry-run": "vendor/bin/rector process --config rector.php --dry-run --clear-cache --ansi",
+    "rector:process": "vendor/bin/rector process --config rector.php --clear-cache --ansi",
+    "license:check": "vendor/bin/composer-license-checker --allow-file .allowed-licenses.php --ansi",
+    "dependency:check": "vendor/bin/composer-dependency-analyser --config composer-dependency-analyser.php"
   }
 }

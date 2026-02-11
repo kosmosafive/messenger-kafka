@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Koco\Kafka\Messenger;
+namespace Kosmosafive\Kafka\Messenger;
 
 use function explode;
-use Koco\Kafka\RdKafka\RdKafkaFactory;
+use Kosmosafive\Kafka\RdKafka\RdKafkaFactory;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use const RD_KAFKA_RESP_ERR__ASSIGN_PARTITIONS;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Koco\Kafka\Serializer;
+namespace Kosmosafive\Kafka\Serializer;
 
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
