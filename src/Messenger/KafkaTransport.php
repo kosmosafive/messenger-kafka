@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Koco\Kafka\Messenger;
+namespace Kosmosafive\Kafka\Messenger;
 
-use Koco\Kafka\RdKafka\RdKafkaFactory;
+use Kosmosafive\Kafka\RdKafka\RdKafkaFactory;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;

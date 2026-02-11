@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Koco\Kafka\Messenger;
+namespace Kosmosafive\Kafka\Messenger;
 
 use RdKafka\Conf as KafkaConf;
 
